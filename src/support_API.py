@@ -11,12 +11,11 @@ load_dotenv()
 
 # Juramento para autentificarse en la API. OAuth1: identificación usuario y contraseña
 oauth = OAuth1(
-                os.getenv("key"),
-                client_secret=os.getenv('secret'),
-                resource_owner_key=os.getenv('access_oauth_token'),
-                resource_owner_secret=os.getenv('access_oauth_token_secret'),
-                verifier=os.getenv('oauth_verifier')
-                )
+        st.secrets["key"],
+        client_secret=st.secrets['secret'],
+        resource_owner_key=st.secrets['access_oauth_token'],
+        resource_owner_secret=st.secrets['access_oauth_token_secret'],
+        verifier=st.secrets['oauth_verifier'])
 
 def fetch_data(id, ref_num):
     url = f"https://api.discogs.com/releases/{id}"

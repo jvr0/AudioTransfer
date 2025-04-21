@@ -6,6 +6,8 @@ import requests as req
 import os
 import time
 import random
+from datetime import datetime
+
 # Cargar las variables del archivo .env
 load_dotenv()
 
@@ -47,7 +49,7 @@ Barcode: {barcode}""",
         'DESCRIPCIÓN DEL ESTADO': 'Envíos muy rápidos con tarifa plana, combine discos y pague solo por el primer lote.',
         'OPERACIÓN': 'ALTA',
         'STOCK': 1,
-        'FECHA DE PUBLICACIÓN': 'hoy',
+        'FECHA DE PUBLICACIÓN': f'{datetime.today().strftime('%d/%m/%Y')}',
         'FORMA DE ENVÍO': 'Otros',
         'GASTOS FIJOS': '4,5',
         }

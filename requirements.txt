@@ -8,6 +8,7 @@ certifi
 charset-normalizer
 click
 comm
+datetime
 debugpy
 decorator
 et_xmlfile

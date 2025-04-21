@@ -24,7 +24,13 @@ def fetch_data(id, ref_num):
     res = req.get(url, auth=oauth)
     data = res.json()
 
-    barcode = next((i.get('value') for i in data.get('identifiers', []) if i.get('description') == 'Scanned'), "" )
+    barcode = next(
+        (i.get("value") for i in data.get('identifiers', []) if i.get("type") == "Barcode" and i.get("description") == "Scanned"),
+        None
+    )
+    if barcode is None:
+        barcode = next(
+            (i.get("value") for i in data.get('identifiers', []) if i.get("type") == "Barcode" and i.get("description") == "Text"), "")
     artista = data.get('artists_sort')
     titulo = data.get('title', '')
     country = data.get('country', '')

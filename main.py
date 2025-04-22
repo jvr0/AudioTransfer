@@ -40,7 +40,7 @@ rows = []
 boton_desactivado = hay_espacios or demasiados_identificadores or referencia_vacia
 
 if st.button(":green[Activar]", disabled=boton_desactivado):
-    st.success("Botón activado")
+    st.success("Accediendo a datos de Discogs")
 
     for i in lista_identificadores:
         row = fetch_data(i, referencia) # type: ignore

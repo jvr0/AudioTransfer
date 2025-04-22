@@ -36,6 +36,7 @@ numexpr
 numpy
 oauthlib
 openpyxl
+typing
 packaging
 pandas
 parso

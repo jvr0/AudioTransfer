@@ -7,9 +7,12 @@ import os
 import time
 import random
 from datetime import datetime
+from typing import List
 
 # Cargar las variables del archivo .env
+
 load_dotenv()
+
 
 # Juramento para autentificarse en la API. OAuth1: identificación usuario y contraseña
 oauth = OAuth1(
@@ -19,7 +22,7 @@ oauth = OAuth1(
         resource_owner_secret=st.secrets['access_oauth_token_secret'],
         verifier=st.secrets['oauth_verifier'])
 
-def fetch_data(id, ref_num):
+def fetch_data(id: List[str], ref_num: str):
     url = f"https://api.discogs.com/releases/{id}"
     res = req.get(url, auth=oauth)
     data = res.json()

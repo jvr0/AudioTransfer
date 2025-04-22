@@ -15,18 +15,35 @@ st.set_page_config(
 )
 
 identificadores = st.text_area('Ingresa los identificadores (Sin espacios, separados por ",")', height=200)
-if " " in identificadores:
-    st.text("Hay espacios en tu texto")
-identificadores = identificadores.split(',')
-if len(identificadores) > 25:
-    st.text("Más de 25 identificadores añadidos")
 referencia = st.text_input("Ingresa la referencia")
-rows = []  # Lista para guardar los resultados
 
-if st.button(":green[Activar]"):
+# Validaciones
+hay_espacios = " " in identificadores
+caracteres_invalidos = not all(c.isdigit() or c == ',' for c in identificadores)
+lista_identificadores = identificadores.split(',') if identificadores else []
+demasiados_identificadores = len(lista_identificadores) > 25
+referencia_vacia = referencia.strip() == ""
 
-    for i in identificadores:
-        row = fetch_data(i, referencia)
+# Mensajes de error
+if hay_espacios:
+    st.text("No se permiten espacios")
+if caracteres_invalidos:
+    st.text("Solo se permiten números y comas")
+if demasiados_identificadores:
+    st.text("Máximo 25 identificadores")
+if referencia_vacia:
+    st.text("La referencia no puede estar vacía")
+
+rows = []
+
+# Botón desactivado si hay errores
+boton_desactivado = hay_espacios or demasiados_identificadores or referencia_vacia
+
+if st.button(":green[Activar]", disabled=boton_desactivado):
+    st.success("Botón activado")
+
+    for i in lista_identificadores:
+        row = fetch_data(i, referencia) # type: ignore
         rows.append(row)
         time.sleep(3)
 

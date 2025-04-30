@@ -38,8 +38,12 @@ def fetch_data(id: List[str], ref_num: str):
     titulo = data.get('title', '')
     country = data.get('country', '')
     released = data.get('released', '')
-    formato_name = data.get('formats',[])[0].get('name', '')
-    formato_description = data.get('formats',[])[0].get('descriptions', '')[0]
+    try:
+        formato_name = data.get('formats',[])[0].get('name', '')
+        formato_description = data.get('formats',[])[0].get('descriptions', '')[0]
+    except:
+        formato_name = data.get('formats',[]).get('name', '')
+        formato_description = data.get('formats',[]).get('descriptions', '')[0]
     catno = data.get('labels', '')[0].get('catno', '')
 
     row = {

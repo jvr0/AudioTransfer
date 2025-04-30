@@ -32,13 +32,13 @@ if referencia_vacia:
 
 rows = []
 
-print("Añadiendo: "{len(identificadores)})
-
 # Botón desactivado si hay errores
 boton_desactivado = demasiados_identificadores or referencia_vacia
 
 if st.button(":green[Activar]", disabled=boton_desactivado):
     st.success("Accediendo a datos de Discogs")
+
+    print(f"Añadiendo: {len(lista_identificadores)} items")
 
     for i in lista_identificadores:
         row = fetch_data(i, referencia) # type: ignore

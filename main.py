@@ -18,7 +18,7 @@ identificadores = st.text_area('Ingresa los identificadores (Sin espacios, separ
 referencia = st.text_input("Ingresa la referencia")
 
 # Validaciones
-caracteres_invalidos = not all(c.isdigit() or c == ',' for c in identificadores)
+caracteres_invalidos = not all(c.isdigit() or c == ',' or c == ' ' for c in identificadores)
 lista_identificadores = identificadores.split(',') if identificadores else []
 demasiados_identificadores = len(lista_identificadores) > 25
 referencia_vacia = referencia.strip() == ""

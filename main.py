@@ -24,6 +24,8 @@ lista_identificadores = identificadores.split(',') if identificadores else []
 demasiados_identificadores = len(lista_identificadores) > 25
 referencia_vacia = referencia.strip() == ""
 
+identificadores = identificadores.replace(' ','')
+
 # Mensajes de error
 if hay_espacios:
     st.text("No se permiten espacios")

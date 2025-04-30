@@ -32,7 +32,7 @@ if referencia_vacia:
 
 rows = []
 
-print("Añadiendo: "{len(identificadores)}")
+print("Añadiendo: "{len(identificadores)})
 
 # Botón desactivado si hay errores
 boton_desactivado = demasiados_identificadores or referencia_vacia

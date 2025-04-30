@@ -45,6 +45,10 @@ if st.button(":green[Activar]", disabled=boton_desactivado):
         rows.append(row)
         time.sleep(3)
 
+        st.text(f"añadido con éxito: {i}")
+
+        print(f"añadido con éxito: {i}")
+
     df = pd.DataFrame(rows)
 
     # Guardar el excel en la memoria

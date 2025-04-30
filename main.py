@@ -19,7 +19,7 @@ referencia = st.text_input("Ingresa la referencia")
 
 # Validaciones
 caracteres_invalidos = not all(c.isdigit() or c == ',' or c == ' ' for c in identificadores)
-lista_identificadores = identificadores.split(',') if identificadores else []
+lista_identificadores = identificadores.split(', ') if identificadores else []
 demasiados_identificadores = len(lista_identificadores) > 25
 referencia_vacia = referencia.strip() == ""
 
@@ -32,13 +32,14 @@ if referencia_vacia:
 
 rows = []
 
+print("Añadiendo: "{len(identificadores)}")
+
 # Botón desactivado si hay errores
 boton_desactivado = demasiados_identificadores or referencia_vacia
 
 if st.button(":green[Activar]", disabled=boton_desactivado):
     st.success("Accediendo a datos de Discogs")
 
-    identificadores = identificadores.replace(' ','')
     for i in lista_identificadores:
         row = fetch_data(i, referencia) # type: ignore
         rows.append(row)
